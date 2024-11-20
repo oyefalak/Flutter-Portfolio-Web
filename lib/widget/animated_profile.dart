@@ -19,7 +19,7 @@ class _AnimatedProfileWidgetState extends State<AnimatedProfileWidget>
   void initState() {
     super.initState();
     _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 3))
+        AnimationController(vsync: this, duration: const Duration(seconds: 3))
           ..repeat(reverse: true);
 
     _animation = Tween(begin: const Offset(0, 0.05), end: const Offset(0, 0.0))

@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/globles/app_text_style.dart';
 
 class MyText extends StatelessWidget {
-  MyText(this.text,{super.key , this.style});
+  const MyText(this.text, {super.key, this.style});
 
-  String text;
-  TextStyle? style = AppTextStyles.headerTextStyle();
+  final String text;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
-    return Text(text,style: style,);
+    return Text(
+      text,
+      style: style ?? AppTextStyles.headerTextStyle(), // Assign default style here
+    );
   }
 }
