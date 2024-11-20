@@ -145,11 +145,11 @@ class _MyPortfolioState extends State<MyPortfolio> {
     return FadeInDown(
       child: RichText(
         text: TextSpan(
-          text: 'Latest ',
+          text: AppStrings.latest,
           style: AppTextStyles.headerTextStyle(fontSize: 30),
           children: [
             TextSpan(
-              text: 'Projects',
+              text: AppStrings.projects,
               style: AppTextStyles.headerTextStyle(fontSize: 30, color: AppColors.robinEdgeBlue),
             ),
           ],

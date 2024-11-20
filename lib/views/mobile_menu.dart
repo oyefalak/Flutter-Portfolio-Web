@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/globles/app_colors.dart';
 import 'package:portfolio/globles/app_strings.dart';
-
 import 'package:portfolio/globles/my_text.dart';
 import 'package:portfolio/globles/app_text_style.dart';
 
@@ -13,8 +12,8 @@ class MobileMenu extends StatefulWidget {
 }
 
 class _MobileMenuState extends State<MobileMenu> {
-  final onMenuHover = Matrix4.identity()..scale(1.0);
-  var menuIndex = 0;
+  final Matrix4 onMenuHover = Matrix4.identity()..scale(1.0);
+  int menuIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class _MobileMenuState extends State<MobileMenu> {
       body: Container(
         width: size.width,
         height: size.height,
-        decoration: BoxDecoration(color: AppColors.bgColor),
+        decoration: const BoxDecoration(color: AppColors.bgColor),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40),
           child: Column(
@@ -32,14 +31,14 @@ class _MobileMenuState extends State<MobileMenu> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   MyText(
-                    'Menu',
+                    AppStrings.menu,
                     style: AppTextStyles.montserratStyle(fontSize: 50),
                   ),
                   IconButton(
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.close,
                         size: 40,
                         color: AppColors.bgColor2,

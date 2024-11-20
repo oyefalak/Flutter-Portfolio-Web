@@ -4,14 +4,13 @@ import 'package:portfolio/globles/app_colors.dart';
 import 'package:portfolio/globles/app_strings.dart';
 import 'package:portfolio/globles/my_text.dart';
 import 'package:portfolio/globles/app_text_style.dart';
-import 'package:portfolio/views/ContactMe.dart';
-import 'package:portfolio/views/FooterClass.dart';
+import 'package:portfolio/views/contact_me.dart';
+import 'package:portfolio/views/footer_class.dart';
 import 'package:portfolio/views/about_me.dart';
 import 'package:portfolio/views/home_page.dart';
 import 'package:portfolio/views/my_portfolio.dart';
 import 'package:portfolio/views/my_service.dart';
-
-import 'package:portfolio/views/MobileMenu.dart';
+import 'package:portfolio/views/mobile_menu.dart';
 import 'package:portfolio/widget/utils/context_extension.dart';
 
 class MainDashboard extends StatefulWidget {

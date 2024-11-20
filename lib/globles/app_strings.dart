@@ -12,7 +12,7 @@ class AppStrings {
   static const youtuber = 'Youtuber';
   static const shabbirRajput = 'Shabbir Rajput';
   static const home = 'Home';
-  static const about = 'About';
+  static const about = 'About ';
   static const service = 'Service';
   static const me = 'Me';
   static const mobileApplicationDeveloper = 'Mobile Application Developer';
@@ -42,6 +42,21 @@ class AppStrings {
   static const readMore = 'Read More';
   static const helloItsMe = 'Hello, it\'s Me';
   static const andIAmA = 'And I\'m a ';
+  static const fullName = 'Full Name';
+  static const emailAddress = 'Email Address';
+  static const mobileNumber = 'Mobile Number';
+  static const emailSubject = 'Email Subject';
+  static const sendButton = 'Send Button';
+  static const yourMessage = 'Your Message';
+  static const contact = 'Contact ';
+  static const createdWithLoveByShabbirRajputUsingFlutter = 'Created with ❤️ by Shabbir Rajput using Flutter';
+  static const downloadCV = 'Download CV';
+  static const menu = 'Menu';
+  static const latest = 'Latest ';
+  static const projects = 'Projects';
+  static const my = 'My ';
+  static const services = 'Services';
+  static const abc = '';
 }
 
 /// [Main Dashboard]

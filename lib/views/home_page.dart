@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage> {
               height: 18,
             ),
             AppButton.buildMaterialButton(
-                buttonName: "Downlode CV",
+                buttonName: AppStrings.downloadCV,
                 onTap: () {
                   openNewTab(resume);
                 })

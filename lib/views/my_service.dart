@@ -4,7 +4,6 @@ import 'package:portfolio/globles/app_colors.dart';
 import 'package:portfolio/globles/app_button.dart';
 import 'package:portfolio/helper_class/helper_class.dart';
 import 'package:portfolio/widget/utils/context_extension.dart';
-
 import 'package:portfolio/globles/app_strings.dart';
 import 'package:portfolio/globles/app_text_style.dart';
 
@@ -56,11 +55,11 @@ class _MyServiceState extends State<MyService> {
     return FadeInDown(
       child: RichText(
         text: TextSpan(
-          text: 'My',
+          text: AppStrings.my,
           style: AppTextStyles.headerTextStyle(fontSize: 30),
           children: [
             TextSpan(
-              text: 'Service',
+              text: AppStrings.service,
               style: AppTextStyles.headerTextStyle(fontSize: 30, color: AppColors.robinEdgeBlue),
             ),
           ],
@@ -90,7 +89,7 @@ class MyServiceListState extends State<MyServiceList> {
         const SizedBox(
           height: 50,
         ),
-        Container(
+        SizedBox(
           // height: MediaQuery.of(context).size.height * 0.6,
           height: 420,
           child: ListView.builder(
@@ -125,11 +124,11 @@ class MyServiceListState extends State<MyServiceList> {
     return FadeInDown(
       child: RichText(
         text: TextSpan(
-          text: 'My',
+          text: AppStrings.my,
           style: AppTextStyles.headerTextStyle(fontSize: 30),
           children: [
             TextSpan(
-              text: 'Service',
+              text: AppStrings.services,
               style: AppTextStyles.headerTextStyle(fontSize: 30, color: AppColors.robinEdgeBlue),
             ),
           ],
@@ -198,7 +197,7 @@ class MyServiceCard extends StatelessWidget {
           const SizedBox(
             height: 14,
           ),
-          AppButton.buildMaterialButton(buttonName: 'Read More', onTap: () {})
+          AppButton.buildMaterialButton(buttonName: AppStrings.readMore, onTap: () {})
         ],
       ),
     );

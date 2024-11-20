@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/globles/app_colors.dart';
 import 'package:portfolio/globles/app_button.dart';
+import 'package:portfolio/globles/app_strings.dart';
 import 'package:portfolio/helper_class/helper_class.dart';
 
 import 'package:portfolio/globles/app_text_style.dart';
@@ -28,7 +29,7 @@ class ContactUs extends StatelessWidget {
                 cursorColor: AppColors.white,
                 style: AppTextStyles.normalStyle(),
                 decoration: buildInputDecoration(
-                  hintText: 'Full Name',
+                  hintText: AppStrings.fullName,
                 ),
               ),
             ),
@@ -41,7 +42,7 @@ class ContactUs extends StatelessWidget {
                 cursorColor: AppColors.white,
                 style: AppTextStyles.normalStyle(),
                 decoration: buildInputDecoration(
-                  hintText: 'Email Address',
+                  hintText: AppStrings.emailAddress,
                 ),
               ),
             ),
@@ -56,7 +57,7 @@ class ContactUs extends StatelessWidget {
                 cursorColor: AppColors.white,
                 style: AppTextStyles.normalStyle(),
                 decoration: buildInputDecoration(
-                  hintText: 'Mobile Number',
+                  hintText: AppStrings.mobileNumber,
                 ),
               ),
             ),
@@ -69,7 +70,7 @@ class ContactUs extends StatelessWidget {
                 cursorColor: AppColors.white,
                 style: AppTextStyles.normalStyle(),
                 decoration: buildInputDecoration(
-                  hintText: 'Email Subject',
+                  hintText: AppStrings.emailSubject,
                 ),
               ),
             ),
@@ -85,14 +86,14 @@ class ContactUs extends StatelessWidget {
                 style: AppTextStyles.normalStyle(),
                 maxLines: 15,
                 decoration: buildInputDecoration(
-                  hintText: 'Mobile Number',
+                  hintText: AppStrings.mobileNumber,
                 ),
               ),
             ),
             const SizedBox(
               height: 40,
             ),
-            AppButton.buildMaterialButton(buttonName: "Send Button", onTap: () {}),
+            AppButton.buildMaterialButton(buttonName: AppStrings.sendButton, onTap: () {}),
             const SizedBox(height: 30),
           ],
         ),
@@ -114,7 +115,7 @@ class ContactUs extends StatelessWidget {
                       cursorColor: AppColors.white,
                       style: AppTextStyles.normalStyle(),
                       decoration: buildInputDecoration(
-                        hintText: 'Full Name',
+                        hintText: AppStrings.fullName,
                       ),
                     ),
                   ),
@@ -129,7 +130,7 @@ class ContactUs extends StatelessWidget {
                       cursorColor: AppColors.white,
                       style: AppTextStyles.normalStyle(),
                       decoration: buildInputDecoration(
-                        hintText: 'Email Address',
+                        hintText: AppStrings.emailAddress,
                       ),
                     ),
                   ),
@@ -150,7 +151,7 @@ class ContactUs extends StatelessWidget {
                       cursorColor: AppColors.white,
                       style: AppTextStyles.normalStyle(),
                       decoration: buildInputDecoration(
-                        hintText: 'Mobile Number',
+                        hintText: AppStrings.mobileNumber,
                       ),
                     ),
                   ),
@@ -165,7 +166,7 @@ class ContactUs extends StatelessWidget {
                       cursorColor: AppColors.white,
                       style: AppTextStyles.normalStyle(),
                       decoration: buildInputDecoration(
-                        hintText: 'Email Subject',
+                        hintText: AppStrings.emailSubject,
                       ),
                     ),
                   ),
@@ -184,14 +185,14 @@ class ContactUs extends StatelessWidget {
                 style: AppTextStyles.normalStyle(),
                 maxLines: 15,
                 decoration: buildInputDecoration(
-                  hintText: 'Mobile Number',
+                  hintText: AppStrings.mobileNumber,
                 ),
               ),
             ),
             const SizedBox(
               height: 40,
             ),
-            AppButton.buildMaterialButton(buttonName: "Send Button", onTap: () {}),
+            AppButton.buildMaterialButton(buttonName: AppStrings.sendButton, onTap: () {}),
             const SizedBox(height: 30),
           ],
         ),
@@ -213,7 +214,7 @@ class ContactUs extends StatelessWidget {
                       cursorColor: AppColors.white,
                       style: AppTextStyles.normalStyle(),
                       decoration: buildInputDecoration(
-                        hintText: 'Full Name',
+                        hintText: AppStrings.fullName,
                       ),
                     ),
                   ),
@@ -228,7 +229,7 @@ class ContactUs extends StatelessWidget {
                       cursorColor: AppColors.white,
                       style: AppTextStyles.normalStyle(),
                       decoration: buildInputDecoration(
-                        hintText: 'Email Address',
+                        hintText: AppStrings.emailAddress,
                       ),
                     ),
                   ),
@@ -249,7 +250,7 @@ class ContactUs extends StatelessWidget {
                       cursorColor: AppColors.white,
                       style: AppTextStyles.normalStyle(),
                       decoration: buildInputDecoration(
-                        hintText: 'Mobile Number',
+                        hintText: AppStrings.mobileNumber,
                       ),
                     ),
                   ),
@@ -264,7 +265,7 @@ class ContactUs extends StatelessWidget {
                       cursorColor: AppColors.white,
                       style: AppTextStyles.normalStyle(),
                       decoration: buildInputDecoration(
-                        hintText: 'Email Subject',
+                        hintText: AppStrings.emailSubject,
                       ),
                     ),
                   ),
@@ -283,14 +284,14 @@ class ContactUs extends StatelessWidget {
                 style: AppTextStyles.normalStyle(),
                 maxLines: 15,
                 decoration: buildInputDecoration(
-                  hintText: 'Mobile Number',
+                  hintText: AppStrings.yourMessage,
                 ),
               ),
             ),
             const SizedBox(
               height: 40,
             ),
-            AppButton.buildMaterialButton(buttonName: "Send Button", onTap: () {}),
+            AppButton.buildMaterialButton(buttonName: AppStrings.sendButton, onTap: () {}),
             const SizedBox(height: 30),
           ],
         ),
@@ -302,11 +303,11 @@ class ContactUs extends StatelessWidget {
     return FadeInDown(
       child: RichText(
         text: TextSpan(
-          text: 'Contact',
+          text: AppStrings.contact,
           style: AppTextStyles.headerTextStyle(fontSize: 30),
           children: [
             TextSpan(
-              text: 'Me',
+              text: AppStrings.me,
               style: AppTextStyles.headerTextStyle(fontSize: 30, color: AppColors.robinEdgeBlue),
             ),
           ],
