@@ -32,6 +32,18 @@ class _MainDashboardState extends State<MainDashboard> {
     FooterClass(),
   ];
 
+  /// Scroll Controller
+  final ScrollController scrollController = ScrollController();
+
+  /// To Scroll To Top
+  void scrollToTop() {
+    scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
   int menuIndex = 0;
 
   @override
@@ -39,14 +51,22 @@ class _MainDashboardState extends State<MainDashboard> {
     return Scaffold(
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Container(
-          height: 40,
-          width: 40,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: AppColors.themeColor),
-          child: const Icon(
-            Icons.arrow_upward,
-            size: 25,
-            color: Colors.black,
+        child: InkWell(
+          onTap: () {
+            scrollToTop();
+          },
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: AppColors.themeColor,
+            ),
+            child: const Icon(
+              Icons.arrow_upward,
+              size: 25,
+              color: Colors.black,
+            ),
           ),
         ),
       ),
@@ -67,7 +87,10 @@ class _MainDashboardState extends State<MainDashboard> {
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-                    Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const MobileMenu()));
+                    Navigator.push(
+                      context,
+                      PageTransition(type: PageTransitionType.rightToLeft, child: const MobileMenu()),
+                    );
                   },
                   icon: const Icon(
                     Icons.menu_sharp,
@@ -122,10 +145,12 @@ class _MainDashboardState extends State<MainDashboard> {
         }),
       ),
       body: ListView.builder(
-          itemCount: screenList.length,
-          itemBuilder: (context, index) {
-            return screenList[index];
-          }),
+        controller: scrollController, // Attach the controller to the ListView
+        itemCount: screenList.length,
+        itemBuilder: (context, index) {
+          return screenList[index];
+        },
+      ),
     );
   }
 
@@ -137,7 +162,10 @@ class _MainDashboardState extends State<MainDashboard> {
       transform: hover ? onMenuHover : null,
       child: Text(
         menuItems[index],
-        style: AppTextStyles.headerTextStyle(color: hover ? AppColors.themeColor : AppColors.white, fontSize: 20),
+        style: AppTextStyles.headerTextStyle(
+          color: hover ? AppColors.themeColor : AppColors.white,
+          fontSize: 20,
+        ),
       ),
     );
   }
