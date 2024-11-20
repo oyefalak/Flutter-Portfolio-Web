@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/globles/app_images.dart';
 
 class AnimatedProfileWidget extends StatefulWidget {
-   const AnimatedProfileWidget({super.key, this.size = 450});
+  const AnimatedProfileWidget({super.key, this.size = 450});
 
   final double size;
 
@@ -10,20 +10,16 @@ class AnimatedProfileWidget extends StatefulWidget {
   State<AnimatedProfileWidget> createState() => _AnimatedProfileWidgetState();
 }
 
-class _AnimatedProfileWidgetState extends State<AnimatedProfileWidget>
-    with SingleTickerProviderStateMixin {
+class _AnimatedProfileWidgetState extends State<AnimatedProfileWidget> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;
 
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 3))
-          ..repeat(reverse: true);
+    _controller = AnimationController(vsync: this, duration: const Duration(seconds: 3))..repeat(reverse: true);
 
-    _animation = Tween(begin: const Offset(0, 0.05), end: const Offset(0, 0.0))
-        .animate(_controller);
+    _animation = Tween(begin: const Offset(0, 0.05), end: const Offset(0, 0.0)).animate(_controller);
   }
 
   @override
@@ -40,8 +36,7 @@ class _AnimatedProfileWidgetState extends State<AnimatedProfileWidget>
         width: widget.size,
         height: widget.size,
         decoration: BoxDecoration(
-          image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage(AppImages.profile)),
+          image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.profile)),
           borderRadius: const BorderRadius.all(Radius.circular(450)),
           // color: Colors.redAccent,
         ),
