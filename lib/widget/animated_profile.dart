@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/globles/app_images.dart';
 
 class AnimatedProfileWidget extends StatefulWidget {
-   AnimatedProfileWidget({super.key, this.size = 450});
+   const AnimatedProfileWidget({super.key, this.size = 450});
 
-  double size;
+  final double size;
 
   @override
   State<AnimatedProfileWidget> createState() => _AnimatedProfileWidgetState();
