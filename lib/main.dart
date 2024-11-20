@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/globles/app_strings.dart';
 import 'package:portfolio/views/main_dashboard.dart';
 
 void main() {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Portfolio',
+      title: AppStrings.portfolio,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
