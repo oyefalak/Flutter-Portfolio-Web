@@ -1,19 +1,18 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/globles/AppColor.dart';
-import 'package:portfolio/globles/AppString.dart';
+import 'package:portfolio/globles/app_colors.dart';
+import 'package:portfolio/globles/app_strings.dart';
 import 'package:portfolio/globles/app_button.dart';
 import 'package:portfolio/globles/app_images.dart';
 import 'package:portfolio/globles/app_text_style.dart';
 import 'package:portfolio/helper_class/helper_class.dart';
+import 'package:portfolio/widget/utils/context_extension.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-
     return HelperClass(
       mobile: Column(
         children: [
@@ -44,12 +43,10 @@ class AboutMe extends StatelessWidget {
           Expanded(child: buildAboutMeContent())
         ],
       ),
-      paddingWidth: size.width * 0.1,
-
-      bgColor: AppColor.bgColor2,
+      paddingWidth: context.width * 0.1,
+      bgColor: AppColors.bgColor2,
     );
   }
-
 
   FadeInRight buildProfilePicture() {
     return FadeInRight(
@@ -58,8 +55,7 @@ class AboutMe extends StatelessWidget {
         width: 450,
         height: 450,
         decoration: BoxDecoration(
-          image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage(AppImages.profile2)),
+          image: DecorationImage(fit: BoxFit.cover, image: AssetImage(AppImages.profile2)),
           borderRadius: const BorderRadius.all(Radius.circular(450)),
           // color: Colors.redAccent,
         ),
@@ -73,7 +69,7 @@ class AboutMe extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         FadeInRight(
-          duration: Duration(milliseconds: 1200),
+          duration: const Duration(milliseconds: 1200),
           child: RichText(
             text: TextSpan(
               text: about,
@@ -81,8 +77,7 @@ class AboutMe extends StatelessWidget {
               children: [
                 TextSpan(
                   text: me,
-                  style: AppTextStyles.headerTextStyle(
-                      fontSize: 30, color: AppColor.themeColor),
+                  style: AppTextStyles.headerTextStyle(fontSize: 30, color: AppColors.themeColor),
                 ),
               ],
             ),
@@ -100,10 +95,12 @@ class AboutMe extends StatelessWidget {
           descAbout,
           maxLines: 10,
           style: AppTextStyles.normalStyle(fontSize: 12),
-
         ),
         const SizedBox(height: 15.0),
-        AppButton.buildMaterialButton(buttonName: "Read More", onTap: () {})
+        AppButton.buildMaterialButton(
+          buttonName: AppStrings.readMore,
+          onTap: () {},
+        )
       ],
     );
   }

@@ -1,15 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:portfolio/globles/AppColor.dart';
-import 'package:portfolio/globles/AppString.dart';
-import 'package:portfolio/globles/MyText.dart';
+import 'package:portfolio/globles/app_colors.dart';
+import 'package:portfolio/globles/app_strings.dart';
+import 'package:portfolio/globles/my_text.dart';
 import 'package:portfolio/globles/app_button.dart';
-import 'package:portfolio/globles/app_images.dart';
 import 'package:portfolio/globles/app_text_style.dart';
 import 'package:portfolio/helper_class/helper_class.dart';
 import 'package:portfolio/widget/animated_profile.dart';
+import 'package:portfolio/widget/utils/context_extension.dart';
 
 import 'my_portfolio.dart';
 
@@ -21,19 +20,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
-  var socialBI;
+  int? socialBI;
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery
-        .of(context)
-        .size;
     return HelperClass(
         mobile: Column(
           children: [
-            AnimatedProfileWidget(size: 350),
+            const AnimatedProfileWidget(size: 350),
             const SizedBox(
               height: 25,
             ),
@@ -45,7 +39,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Expanded(child: buildProfileInfo()),
-            AnimatedProfileWidget(),
+            const AnimatedProfileWidget(),
           ],
         ),
         desktop: Row(
@@ -53,11 +47,11 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Expanded(child: buildProfileInfo()),
-            AnimatedProfileWidget(),
+            const AnimatedProfileWidget(),
           ],
         ),
-        paddingWidth: size.width * 0.1,
-        bgColor: AppColor.bgColor);
+        paddingWidth: context.width * 0.1,
+        bgColor: AppColors.bgColor);
   }
 
   Column buildProfileInfo() {
@@ -92,14 +86,11 @@ class _HomePageState extends State<HomePage> {
                 AnimatedTextKit(
                   animatedTexts: skillList
                       .map(
-                        (skill) =>
-                        TyperAnimatedText(
+                        (skill) => TyperAnimatedText(
                           skill,
-                          textStyle:
-                          AppTextStyles.montserratStyle(
-                              color: Colors.lightBlue),
+                          textStyle: AppTextStyles.montserratStyle(color: Colors.lightBlue),
                         ),
-                  )
+                      )
                       .toList(),
                   isRepeatingAnimation: true,
                 )
@@ -138,11 +129,9 @@ class _HomePageState extends State<HomePage> {
                         });
                       },
                       borderRadius: BorderRadius.circular(550.0),
-                      hoverColor: AppColor.themeColor,
-                      splashColor: AppColor.lawGreen,
-                      child: buildSocialButton(
-                          asset: socialButtons[index].imagePath,
-                          hover: socialBI == index ? true : false),
+                      hoverColor: AppColors.themeColor,
+                      splashColor: AppColors.lawGreen,
+                      child: buildSocialButton(asset: socialButtons[index].imagePath, hover: socialBI == index ? true : false),
                     );
                   },
                   separatorBuilder: (context, child) {
@@ -160,9 +149,10 @@ class _HomePageState extends State<HomePage> {
               height: 18,
             ),
             AppButton.buildMaterialButton(
-                buttonName: "Downlode CV", onTap: () {
+                buttonName: "Downlode CV",
+                onTap: () {
                   openNewTab(resume);
-            })
+                })
           ],
         ),
       ],
@@ -175,8 +165,8 @@ Container buildSocialButton({required String asset, required bool hover}) {
     width: 50,
     height: 50,
     decoration: BoxDecoration(
-      border: Border.all(color: AppColor.themeColor, width: 1.0),
-      color: AppColor.bgColor2,
+      border: Border.all(color: AppColors.themeColor, width: 1.0),
+      color: AppColors.bgColor2,
       shape: BoxShape.circle,
     ),
     padding: const EdgeInsets.all(6),
@@ -184,7 +174,7 @@ Container buildSocialButton({required String asset, required bool hover}) {
       asset,
       width: 10,
       height: 12,
-      color: hover ? Colors.white : AppColor.themeColor,
+      color: hover ? Colors.white : AppColors.themeColor,
       // fit: BoxFit.fill,
     ),
   );

@@ -1,12 +1,12 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/globles/AppColor.dart';
+import 'package:portfolio/globles/app_colors.dart';
 import 'package:portfolio/globles/app_button.dart';
-import 'package:portfolio/globles/app_images.dart';
 import 'package:portfolio/helper_class/helper_class.dart';
+import 'package:portfolio/widget/utils/context_extension.dart';
 
-import '../globles/AppString.dart';
-import '../globles/app_text_style.dart';
+import 'package:portfolio/globles/app_strings.dart';
+import 'package:portfolio/globles/app_text_style.dart';
 
 class MyService extends StatefulWidget {
   const MyService({super.key});
@@ -24,10 +24,8 @@ class _MyServiceState extends State<MyService> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
     return HelperClass(
-        mobile:
-        Column(
+        mobile: Column(
           children: [
             buildMyServiceText(),
             const SizedBox(height: 60),
@@ -36,7 +34,6 @@ class _MyServiceState extends State<MyService> {
                 onTap: () {},
                 onHover: (value) {
                   setState(() {
-                  //  hoverStates[i] = value;
                     hoverIndex = value ? i : -1;
                   });
                 },
@@ -49,11 +46,10 @@ class _MyServiceState extends State<MyService> {
             ],
           ],
         ),
-        tablet:
-        MyServiceList(),
-        desktop: MyServiceList(),
-        paddingWidth: size.width * 0.04,
-        bgColor: AppColor.bgColor);
+        tablet: const MyServiceList(),
+        desktop: const MyServiceList(),
+        paddingWidth: context.width * 0.04,
+        bgColor: AppColors.bgColor);
   }
 
   FadeInDown buildMyServiceText() {
@@ -65,8 +61,7 @@ class _MyServiceState extends State<MyService> {
           children: [
             TextSpan(
               text: 'Service',
-              style: AppTextStyles.headerTextStyle(
-                  fontSize: 30, color: AppColor.robinEdgeBlue),
+              style: AppTextStyles.headerTextStyle(fontSize: 30, color: AppColors.robinEdgeBlue),
             ),
           ],
         ),
@@ -77,7 +72,8 @@ class _MyServiceState extends State<MyService> {
 
 class MyServiceList extends StatefulWidget {
   final Axis direction;
-  const MyServiceList({super.key,this.direction = Axis.horizontal});
+
+  const MyServiceList({super.key, this.direction = Axis.horizontal});
 
   @override
   MyServiceListState createState() => MyServiceListState();
@@ -124,6 +120,7 @@ class MyServiceListState extends State<MyServiceList> {
       ],
     );
   }
+
   FadeInDown buildMyServiceText() {
     return FadeInDown(
       child: RichText(
@@ -133,8 +130,7 @@ class MyServiceListState extends State<MyServiceList> {
           children: [
             TextSpan(
               text: 'Service',
-              style: AppTextStyles.headerTextStyle(
-                  fontSize: 30, color: AppColor.robinEdgeBlue),
+              style: AppTextStyles.headerTextStyle(fontSize: 30, color: AppColors.robinEdgeBlue),
             ),
           ],
         ),
@@ -144,7 +140,7 @@ class MyServiceListState extends State<MyServiceList> {
 }
 
 class MyServiceCard extends StatelessWidget {
-  final service serviceItem;
+  final Service serviceItem;
   final bool isHover;
   final double hoverWidth;
   final double width;
@@ -165,17 +161,7 @@ class MyServiceCard extends StatelessWidget {
     return AnimatedContainer(
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 24),
-      decoration: BoxDecoration(
-          color: AppColor.bgColor2,
-          borderRadius: BorderRadius.circular(30),
-          border: isHover ? Border.all(color: AppColor.themeColor, width: 2) : null,
-          boxShadow: const [
-            BoxShadow(
-                color: Colors.black54,
-                spreadRadius: 4,
-                blurRadius: 4.5,
-                offset: Offset(4, 4.5))
-          ]),
+      decoration: BoxDecoration(color: AppColors.bgColor2, borderRadius: BorderRadius.circular(30), border: isHover ? Border.all(color: AppColors.themeColor, width: 2) : null, boxShadow: const [BoxShadow(color: Colors.black54, spreadRadius: 4, blurRadius: 4.5, offset: Offset(4, 4.5))]),
       width: isHover ? hoverWidth : width,
       height: isHover ? 425 : 415,
       duration: const Duration(microseconds: 600),
@@ -189,7 +175,7 @@ class MyServiceCard extends StatelessWidget {
                 serviceItem.imageUrl ?? '',
                 height: 100,
                 width: 100,
-                color: AppColor.themeColor,
+                color: AppColors.themeColor,
               ),
               const SizedBox(
                 height: 28,
@@ -203,11 +189,11 @@ class MyServiceCard extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                serviceItem.decs,
+                serviceItem.desc,
                 style: AppTextStyles.normalStyle(fontSize: 14),
                 textAlign: TextAlign.center,
               ),
-             ],
+            ],
           ),
           const SizedBox(
             height: 14,

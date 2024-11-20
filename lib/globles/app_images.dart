@@ -1,4 +1,6 @@
 class AppImages {
+  AppImages._();
+
   static String code = 'assets/images/coding.png';
   static String web = 'assets/images/web.png';
   static String app = 'assets/images/app.png';
@@ -14,6 +16,7 @@ class AppImages {
   static String twitter = 'assets/images/twit.png';
   static String profile = 'assets/images/sabbir2.png';
   static String profile2 = 'assets/images/sabbir3.png';
+
   // static String profile = 'assets/images/hanif3.jpg';
   // static String profile2 = 'assets/images/hanif2.jpg';
   static String img = 'assets/images/work2.png';

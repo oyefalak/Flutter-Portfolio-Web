@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:portfolio/globles/AppColor.dart';
-import 'package:portfolio/globles/AppString.dart';
+import 'package:portfolio/globles/app_colors.dart';
+import 'package:portfolio/globles/app_strings.dart';
 
-import '../globles/MyText.dart';
-import '../globles/app_text_style.dart';
+import 'package:portfolio/globles/my_text.dart';
+import 'package:portfolio/globles/app_text_style.dart';
 
-class Mobilemenu extends StatefulWidget {
-  const Mobilemenu({super.key});
+class MobileMenu extends StatefulWidget {
+  const MobileMenu({super.key});
 
   @override
-  State<Mobilemenu> createState() => _MobilemenuState();
+  State<MobileMenu> createState() => _MobileMenuState();
 }
 
-class _MobilemenuState extends State<Mobilemenu> {
+class _MobileMenuState extends State<MobileMenu> {
   final onMenuHover = Matrix4.identity()..scale(1.0);
   var menuIndex = 0;
 
@@ -24,7 +23,7 @@ class _MobilemenuState extends State<Mobilemenu> {
       body: Container(
         width: size.width,
         height: size.height,
-        decoration: BoxDecoration(color: AppColor.bgColor),
+        decoration: BoxDecoration(color: AppColors.bgColor),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40),
           child: Column(
@@ -43,7 +42,7 @@ class _MobilemenuState extends State<Mobilemenu> {
                       icon: Icon(
                         Icons.close,
                         size: 40,
-                        color: AppColor.bgColor2,
+                        color: AppColors.bgColor2,
                       ))
                 ],
               ),
@@ -62,8 +61,7 @@ class _MobilemenuState extends State<Mobilemenu> {
                       }
                     });
                   },
-                  child: buildNavBarAnimatedContainer(
-                      index, menuIndex == index ? true : false),
+                  child: buildNavBarAnimatedContainer(index, menuIndex == index ? true : false),
                 ),
                 separatorBuilder: (context, child) => const SizedBox(
                   width: 8,
@@ -87,8 +85,7 @@ class _MobilemenuState extends State<Mobilemenu> {
       transform: hover ? onMenuHover : null,
       child: Text(
         menuItems[index],
-        style: AppTextStyles.headerTextStyle(
-            color: hover ? AppColor.themeColor : AppColor.white, fontSize: 40),
+        style: AppTextStyles.headerTextStyle(color: hover ? AppColors.themeColor : AppColors.white, fontSize: 40),
       ),
     );
   }

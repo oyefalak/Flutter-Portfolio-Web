@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/globles/AppColor.dart';
+import 'package:portfolio/globles/app_colors.dart';
 import 'package:portfolio/globles/app_text_style.dart';
 
 class AppButton {
@@ -13,12 +13,12 @@ class AppButton {
       onPressed: () {
         onTap();
       },
-      color: AppColor.themeColor,
+      color: AppColors.themeColor,
       height: 60,
       minWidth: 120,
       child: Text(
         buttonName,
-        style: AppTextStyles.montserratStyle(color: AppColor.bgColor,fontSize: 15),
+        style: AppTextStyles.montserratStyle(color: AppColors.bgColor, fontSize: 15),
       ),
     );
   }
