@@ -93,7 +93,7 @@ class ContactUs extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            AppButton.buildMaterialButton(buttonName: AppStrings.sendButton, onTap: () {}),
+            AppButton.buildMaterialButton(buttonName: AppStrings.sendMessage, onTap: () {}),
             const SizedBox(height: 30),
           ],
         ),
@@ -192,7 +192,7 @@ class ContactUs extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            AppButton.buildMaterialButton(buttonName: AppStrings.sendButton, onTap: () {}),
+            AppButton.buildMaterialButton(buttonName: AppStrings.sendMessage, onTap: () {}),
             const SizedBox(height: 30),
           ],
         ),
@@ -291,7 +291,7 @@ class ContactUs extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            AppButton.buildMaterialButton(buttonName: AppStrings.sendButton, onTap: () {}),
+            AppButton.buildMaterialButton(buttonName: AppStrings.sendMessage, onTap: () {}),
             const SizedBox(height: 30),
           ],
         ),

@@ -46,7 +46,7 @@ class AppStrings {
   static const emailAddress = 'Email Address';
   static const mobileNumber = 'Mobile Number';
   static const emailSubject = 'Email Subject';
-  static const sendButton = 'Send Button';
+  static const sendMessage = 'Send Message';
   static const yourMessage = 'Your Message';
   static const contact = 'Contact ';
   static const createdWithLoveByShabbirRajputUsingFlutter = 'Created with ❤️ by Shabbir Rajput using Flutter';
