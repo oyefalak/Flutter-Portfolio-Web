@@ -11,6 +11,7 @@ class MyText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      maxLines: 2,
       style: style ?? AppTextStyles.headerTextStyle(), // Assign default style here
     );
   }

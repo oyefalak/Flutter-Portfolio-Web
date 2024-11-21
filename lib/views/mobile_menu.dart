@@ -19,57 +19,59 @@ class _MobileMenuState extends State<MobileMenu> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        width: size.width,
-        height: size.height,
-        decoration: const BoxDecoration(color: AppColors.bgColor),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  MyText(
-                    AppStrings.menu,
-                    style: AppTextStyles.montserratStyle(fontSize: 50),
+      body: SingleChildScrollView(
+        child: Container(
+          width: size.width,
+          height: size.height,
+          decoration: const BoxDecoration(color: AppColors.bgColor),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    MyText(
+                      AppStrings.menu,
+                      style: AppTextStyles.montserratStyle(fontSize: 50),
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.close,
+                          size: 40,
+                          color: AppColors.bgColor2,
+                        ))
+                  ],
+                ),
+                ListView.separated(
+                  itemBuilder: (context, index) => InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    borderRadius: BorderRadius.circular(100),
+                    onHover: (value) {
+                      setState(() {
+                        if (value) {
+                          menuIndex = index;
+                        } else {
+                          menuIndex = 0;
+                        }
+                      });
+                    },
+                    child: buildNavBarAnimatedContainer(index, menuIndex == index ? true : false),
                   ),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: const Icon(
-                        Icons.close,
-                        size: 40,
-                        color: AppColors.bgColor2,
-                      ))
-                ],
-              ),
-              ListView.separated(
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  borderRadius: BorderRadius.circular(100),
-                  onHover: (value) {
-                    setState(() {
-                      if (value) {
-                        menuIndex = index;
-                      } else {
-                        menuIndex = 0;
-                      }
-                    });
-                  },
-                  child: buildNavBarAnimatedContainer(index, menuIndex == index ? true : false),
-                ),
-                separatorBuilder: (context, child) => const SizedBox(
-                  width: 8,
-                ),
-                itemCount: menuItems.length,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-              )
-            ],
+                  separatorBuilder: (context, child) => const SizedBox(
+                    width: 8,
+                  ),
+                  itemCount: menuItems.length,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                )
+              ],
+            ),
           ),
         ),
       ),

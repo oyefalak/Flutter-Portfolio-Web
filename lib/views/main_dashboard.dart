@@ -32,10 +32,26 @@ class _MainDashboardState extends State<MainDashboard> {
     FooterClass(),
   ];
 
-  /// Scroll Controller
   final ScrollController scrollController = ScrollController();
+  bool isFabVisible = false;
+  int currentSectionIndex = 0;
+  int? hoveredMenuIndex;
 
-  /// To Scroll To Top
+  @override
+  void initState() {
+    super.initState();
+
+    scrollController.addListener(() {
+      setState(() {
+        isFabVisible = scrollController.offset > 0;
+
+        final calculatedIndex = (scrollController.offset / context.height).floor();
+        currentSectionIndex = calculatedIndex >= 0 && calculatedIndex < screenList.length ? calculatedIndex : currentSectionIndex;
+      });
+    });
+  }
+
+  /// Scroll To Top On Tap Of Floating Action Button
   void scrollToTop() {
     scrollController.animateTo(
       0,
@@ -44,32 +60,42 @@ class _MainDashboardState extends State<MainDashboard> {
     );
   }
 
-  int menuIndex = 0;
+  /// Scroll To Selection Of Menu Taps
+  void scrollToSection(int index) {
+    final targetOffset = index * context.height;
+    scrollController.animateTo(
+      targetOffset,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: InkWell(
-          onTap: () {
-            scrollToTop();
-          },
-          child: Container(
-            height: 40,
-            width: 40,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color: AppColors.themeColor,
-            ),
-            child: const Icon(
-              Icons.arrow_upward,
-              size: 25,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      ),
+      floatingActionButton: isFabVisible
+          ? Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: InkWell(
+                onTap: () {
+                  scrollToTop();
+                },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: AppColors.themeColor,
+                  ),
+                  child: const Icon(
+                    Icons.arrow_upward,
+                    size: 25,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            )
+          : null,
       backgroundColor: AppColors.bgColor,
       appBar: AppBar(
         backgroundColor: AppColors.bgColor,
@@ -89,7 +115,10 @@ class _MainDashboardState extends State<MainDashboard> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      PageTransition(type: PageTransitionType.rightToLeft, child: const MobileMenu()),
+                      PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        child: const MobileMenu(),
+                      ),
                     );
                   },
                   icon: const Icon(
@@ -114,18 +143,19 @@ class _MainDashboardState extends State<MainDashboard> {
                     height: 30,
                     child: ListView.separated(
                       itemBuilder: (context, index) => InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          scrollToSection(index);
+                        },
                         borderRadius: BorderRadius.circular(100),
                         onHover: (value) {
                           setState(() {
-                            if (value) {
-                              menuIndex = index;
-                            } else {
-                              menuIndex = 0;
-                            }
+                            hoveredMenuIndex = value ? index : null;
                           });
                         },
-                        child: buildNavBarAnimatedContainer(index, menuIndex == index ? true : false),
+                        child: buildNavBarAnimatedContainer(
+                          index,
+                          hoveredMenuIndex == index,
+                        ),
                       ),
                       separatorBuilder: (context, child) => const SizedBox(
                         width: 8,
@@ -145,7 +175,7 @@ class _MainDashboardState extends State<MainDashboard> {
         }),
       ),
       body: ListView.builder(
-        controller: scrollController, // Attach the controller to the ListView
+        controller: scrollController,
         itemCount: screenList.length,
         itemBuilder: (context, index) {
           return screenList[index];
@@ -154,16 +184,17 @@ class _MainDashboardState extends State<MainDashboard> {
     );
   }
 
-  buildNavBarAnimatedContainer(int index, bool hover) {
+  buildNavBarAnimatedContainer(int index, bool isHovered) {
+    final isActive = currentSectionIndex == index;
     return AnimatedContainer(
-      duration: const Duration(microseconds: 200),
+      duration: const Duration(milliseconds: 200),
       alignment: Alignment.center,
-      width: hover ? 100 : 95,
-      transform: hover ? onMenuHover : null,
+      width: isHovered ? 100 : 95,
+      transform: isHovered ? onMenuHover : null,
       child: Text(
         menuItems[index],
         style: AppTextStyles.headerTextStyle(
-          color: hover ? AppColors.themeColor : AppColors.white,
+          color: isActive ? AppColors.themeColor : (isHovered ? AppColors.themeColor : AppColors.white),
           fontSize: 20,
         ),
       ),
